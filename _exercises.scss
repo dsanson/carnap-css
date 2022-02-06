@@ -1,0 +1,414 @@
+@import 'fonts';
+@import 'colors';
+
+// document styling
+
+// set background globally, but exclude all the children
+// of proofchecker aligner, because this breaks them
+// TODO: this still breaks proofdisplay
+// One solution: set background for everything but exercises. Then set each exercise type background separately.
+
+.exercise:not([data-carnap-type='proofchecker'] .aligner *) {
+  background-color: var(--background);
+}
+
+// exercises
+// TODO: fix spacing issues for text/headings that occur right before or after an exercise
+// TODO: fix proof render display styling
+
+div.exercise {
+  border: solid 1px var(--border) !important;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-bottom: 2em !important;
+  margin-top: 2em !important;
+
+  &:focus {
+    box-shadow: 0 0 2px var(--border);
+  }
+
+  input:focus,
+  textarea:focus {
+    border: thin solid var(--focusinput);
+    box-shadow: 0 0 2px var(--border);
+  }
+
+  [data-carnap-type='qualitative'].success > .input,
+  [data-carnap-type='translate'].success > .output,
+  [data-carnap-type='synchecker'].success .tree,
+  [data-carnap-type='synchecker'].success .tree *,
+  [data-carnap-type='proofchecker'].success > .goal,
+  [data-carnap-type='treedeductionchecker'].success > .input,
+  [data-carnap-type='sequentchecker'].success > .input,
+  [data-carnap-type='truthtable'].success > .input,
+  [data-carnap-type='countermodeler'].success > .input {
+    background-color: var(--success) !important;
+  }
+  
+  [data-carnap-type='qualitative'].success > .input::after {
+    float: right;
+    content: " ✓ ";
+    font-size: 16px;
+  }
+
+  &>span:nth-child(1),
+  &>span:nth-child(2) {
+    background-color: var(--tab);
+    border-radius: 5px;
+    color: var(--base04) !important;
+  }
+
+  // don't display empty labels
+  &[data-carnap-label=''] > span:nth-child(1) {
+    display: none;
+  }
+}
+
+// buttons
+// TODO: fix for small screens. Currently with lots of buttons in small screens,
+// they pile up in an ugly way. See for example a truth table with the counterexample
+// option enabled.
+.buttonWrapper {
+  bottom: -14px;
+  position: absolute !important;
+  top: inherit !important;
+
+  button {
+    background-color: var(--buttonbackground) !important;
+    border-radius: 5px;
+    color: var(--buttonforeground) !important;
+    height: 1.5em !important;
+    margin: 0 .25em !important;
+    cursor: pointer;
+
+    * {
+      background-color: var(--buttonbackground) !important;
+      color: var(--buttonforeground) !important;
+    }
+ 
+    svg, svg * {
+      //fill:var(--buttonforeground) !important;
+      stroke:var(--buttonforeground) !important;
+    }
+    
+    //this isn't working
+    &[data-carnap-exercise-status='submitted'] {
+      background-color: var(--buttonsubmittedbackground) !important;
+      color: var(--buttonsubmittedforeground) !important;
+      
+      * {
+        background-color: var(--buttonsubmittedbackground) !important;
+        color: var(--buttonsubmittedforeground) !important;
+      }
+      svg {
+        fill: var(--buttonsubmittedbackground) !important;
+        stroke: var(--buttonsubmittedforeground) !important;
+      }
+    }
+
+    //this isn't working
+    &:hover {
+      background-color: var(--buttonhoverbackground) !important;
+      color: var(--buttonhoverforeground) !important;
+      
+      * {
+        background-color: var(--buttonhoverbackground) !important;
+        color: var(--buttonhoverforeground) !important;
+      }
+      svg {
+        fill: var(--buttonhoverbackground) !important;
+        stroke: var(--buttonhoverforeground) !important;
+      }
+    }
+  }
+}
+
+
+[data-carnap-type='translate'],
+[data-carnap-type='synchecker'],
+[data-carnap-type='truthtable'],
+[data-carnap-type='countermodeler'],
+[data-carnap-type='sequentchecker'],
+[data-carnap-type='treedeductionchecker'],
+[data-carnap-type='qualitative'] {
+  * {
+    font-size: 12pt !important;
+  }
+}
+
+// multiple choice questions
+[data-carnap-qualitativetype='multiplechoice'],
+[data-carnap-qualitativetype='multipleselection']
+{
+  &>.input {
+    background-color: inherit !important;
+    border: 0 !important;
+  }
+
+  &>.output {
+    border: 0 !important;
+  }
+
+  .output > form > div {
+    display: flex;
+    flex-flow: row;
+
+    &>input {
+      height: 1em !important;
+      margin-right: 1em !important;
+
+      &:checked + label {
+        color: var(--base0C);
+      }
+    }
+  }
+}
+
+// short answer questions
+[data-carnap-qualitativetype='shortanswer'] {
+  textarea {
+    background-color: var(--inputbackground);
+    color: var(--inputcolor);
+    border: 1px solid var(--border);
+    width: 100%;
+  }
+
+  &>.input {
+    background-color: inherit !important;
+    border: 0 !important;
+  }
+  
+  &>.output {
+    border: 0 !important;
+  }
+}
+
+// syntax questions
+// TODO: add display mode. But first need a syntax for specifying solutions.
+[data-carnap-type='synchecker'] {
+  align-items: center;
+  display: flex;
+  flex-flow: column;
+  text-align: center;
+
+  &>input {
+    width: 3em;
+  }
+
+  &>.output {
+    
+    .tree {
+      background-color: var(--background);
+    }
+  }
+}
+
+.tree {
+  background-color: var(--background);
+  font-size:14pt !important;
+
+  li::before,
+  li::after {
+  	border-top: 1px solid var(--border) !important;
+  }
+
+  li::after{
+  	border-left: 1px solid var(--border) !important;
+  }
+
+  li:only-child::after,
+  li:only-child::before {
+	  display: none !important;
+  }
+
+  li:first-child::before, 
+  li:last-child::after {
+  	border: 0 none !important;
+  }
+
+  li:last-child::before {
+	  border-right: 1px solid var(--border) !important;
+  }
+  ul ul::before{
+    border-left: 1px solid var(--border) !important;
+  }
+}
+
+// translation questions
+[data-carnap-type='translate'] {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+
+  input {
+    background-color: var(--inputbackground);
+    color: var(--inputcolor);
+    border: 1px solid var(--border);
+    margin-bottom: .5em !important;
+    order: 2;
+    width: 100% !important;
+  }
+
+  .output {
+    border: 0 !important;
+  }
+
+  // display mode for translation questions
+  // use javascript to apply the attribute 'disabled' to the input boxes
+  &[options~='display'] {
+    input {
+      background-color: var(--background) !important;
+      border: 0 !important;
+      color: color !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    .output {
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+  }
+}
+
+// "Recognizing Rules" Problems
+[data-carnap-type='translate'][data-carnap-translate-type='recognizing-rules'] {
+  display: flex;
+  flex-flow: row;
+  width: 100%;
+  
+  // TODO: use js to set value attribute to ''
+  // workaround: provide an empty line as the "solution"
+  >.input {
+    flex: 100 0 20%;
+    order: 2;
+  }
+
+  >.output {
+    border: 0 !important;
+  }
+}
+
+[data-carnap-type='truthtable'] {
+
+  font-family: $font-stack-sans;
+
+  select {
+    appearance: none;
+    background-color: var(--inputbackground);
+    color: var(--inputcolor);
+    border: solid 3px var(--base02);
+    border-radius: 5px;
+    box-sizing: border-box;
+
+    &:hover {
+      border: solid 3px var(--base0C);
+    }
+  }
+
+  td {
+    text-align: center;
+    
+    span {
+      padding: 0 .25em;
+    }
+  }
+
+  > .input {
+    background-color: inherit !important;
+    border: 0 !important;
+    text-align: left;
+  }
+
+  > .output {
+    background-color: inherit !important;
+    border: 0 !important;
+
+    > table {
+      margin: auto;
+    }
+  }
+
+  &[data-carnap-options~='display'] {
+    select { 
+      background-color: var(--background);
+      border: 0;
+    }
+  }
+  
+  // TODO: implement this in javascript. Requires modifying the parent width.
+  // TODO: set each select to "disabled" using javascript
+  &[data-carnap-options~='compact'] {
+    width: auto;
+  }
+}
+
+
+
+ 
+
+// countermodels
+// TODO: add display mode
+[data-carnap-type='countermodeler'] {
+  > .input {
+    background-color: inherit !important;
+    border: 0 !important;
+  }
+
+  > .output {
+    border: 0 !important;
+  }
+
+  label {
+    display: grid !important;
+    grid-template-rows: 100%;
+    grid-template-columns: 5em auto;
+
+    select {
+      background-color: var(--inputbackground);
+      color: var(--inputcolor);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      grid-column-end: 2;
+      grid-column-start: 2;
+      grid-row-end: 1;
+      grid-row-start: 1;
+      margin: 1px 0 1px 1em;
+    }
+
+    textarea {
+      background-color: var(--inputbackground);
+      color: var(--inputcolor);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      flex: 1 1 auto;
+      grid-column-end: 2;
+      grid-column-start: 2;
+      grid-row-end: 1;
+      grid-row-start: 1;
+      margin-left: 1em;
+    }
+  }
+}
+
+// derivations
+[data-carnap-type='proofchecker'] {
+
+  > .goal {
+    background-color: var(--background) !important;
+    border: 0 !important;
+  }
+  
+  //TODO: Button size isn't quite right
+  .buttonWrapper {
+    bottom: -92px;
+  }
+
+  button {
+    height: 1.7em !important;
+  }
+
+  //TODO: display mode?
+  //TODO: background-color is clobbering the pretty render
+}

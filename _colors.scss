@@ -1,0 +1,148 @@
+// Base 16 color definitions
+//
+// base00 - Default Background
+// base01 - Lighter Background (Used for status bars, line number and folding marks)
+// base02 - Selection Background
+// base03 - Comments, Invisibles, Line Highlighting
+// base04 - Dark Foreground (Used for status bars)
+// base05 - Default Foreground, Caret, Delimiters, Operators
+// base06 - Light Foreground (Not often used)
+// base07 - Light Background (Not often used)
+// base08 - Variables, XML Tags, Markup Link Text, Markup Lists, Diff Deleted
+// base09 - Integers, Boolean, Constants, XML Attributes, Markup Link Url
+// base0A - Classes, Markup Bold, Search Text Background
+// base0B - Strings, Inherited Class, Markup Code, Diff Inserted
+// base0C - Support, Regular Expressions, Escape Characters, Markup Quotes
+// base0D - Functions, Methods, Attribute IDs, Headings
+// base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
+// base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
+
+// light palette as default
+//@import 'base16/base16-gruvbox-light-hard';
+//@import 'base16/base16-cupcake';
+//@import 'base16/base16-summerfruit-light';
+
+@import 'base16/base16-mexico-light';
+:root {
+  --color: #{$base05};
+  --background: #{$base00};
+  --link: #{$base0D};
+  --visited: #{$base0E};
+  --border: #{$base04};
+  --footer: #{$base02};
+  --tab: #{$base02};
+  --input: white;
+  --inputbackground: white;
+  --inputcolor: black;
+  --focusinput: #{$base0D};
+  --success: lightgreen;
+  --failure: coral;
+  --incomplete: orange;
+  --meets: lightgreen;
+  --excels: #0909FF;
+  --buttonbackground: #{$base0D};
+  --buttonforeground: #{$base00};
+  --buttonsubmittedbackground: #{$base02};
+  --buttonsubmittedforeground: #{$base04};
+  --buttonhoverbackground: #{$base0C};
+  --buttonhoverforeground: #{$base02};
+  --keyword: #{$base0E};
+  --base00: #{$base00};
+  --base01: #{$base01};
+  --base02: #{$base02};
+  --base03: #{$base03};
+  --base04: #{$base04};
+  --base05: #{$base05};
+  --base06: #{$base06};
+  --base07: #{$base07};
+  --base08: #{$base08};
+  --base09: #{$base09};
+  --base0A: #{$base0A};
+  --base0B: #{$base0B};
+  --base0C: #{$base0C};
+  --base0D: #{$base0D};
+  --base0E: #{$base0E};
+  --base0F: #{$base0F};
+}
+
+// dark palette if requested
+@media (prefers-color-scheme: dark) {
+  //@import 'base16/base16-gruvbox-dark-soft';
+  //@import 'base16/base16-eighties';
+  @import 'base16/base16-oceanicnext';
+  :root {
+    --color: #{$base05};
+    --background: #{$base00};
+    --link: #{$base0D};
+    --visited: #{$base0E};
+    --border: #{$base04};
+    --footer: #{$base02};
+    --tab: #{$base02};
+    --input: white;
+    --success: lightgreen;
+    --keyword: #{$base0E};
+    --base00: #{$base00};
+    --base01: #{$base01};
+    --base02: #{$base02};
+    --base03: #{$base03};
+    --base04: #{$base04};
+    --base05: #{$base05};
+    --base06: #{$base06};
+    --base07: #{$base07};
+    --base08: #{$base08};
+    --base09: #{$base09};
+    --base0A: #{$base0A};
+    --base0B: #{$base0B};
+    --base0C: #{$base0C};
+    --base0D: #{$base0D};
+    --base0E: #{$base0E};
+    --base0F: #{$base0F};
+  }
+}
+
+// print palette for print
+@media print {
+  @import 'base16/base16-grayscale-light';
+  :root {
+    --color: #{$base05};
+    --background: #{$base00};
+    --link: #{$base05};
+    --visited: #{$base05};
+    --border: #{$base06};
+    --footer: #{$base07};
+    --tab: #{$base02};
+    --input: white;
+    --keyword: #{$base0E};
+    --success: lightgreen;
+    --base00: #{$base00};
+    --base01: #{$base01};
+    --base02: #{$base02};
+    --base03: #{$base03};
+    --base04: #{$base04};
+    --base05: #{$base05};
+    --base06: #{$base06};
+    --base07: #{$base07};
+    --base08: #{$base08};
+    --base09: #{$base09};
+    --base0A: #{$base0A};
+    --base0B: #{$base0B};
+    --base0C: #{$base0C};
+    --base0D: #{$base0D};
+    --base0E: #{$base0E};
+    --base0F: #{$base0F};
+  }
+}
+
+* {
+  color: var(--color);
+}
+
+a {
+  &:link {
+    color: var(--link);
+  }
+
+  &:visited {
+    color: var(--visited);
+  }
+}
