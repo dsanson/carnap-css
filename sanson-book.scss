@@ -125,9 +125,7 @@ i.zoom-icon {
   margin-bottom: -.2em;
 }
 
-nav#navbar li.dropdown.Zoom::before,
-nav#navbar li.dropdown.Reggienet::before,
-nav#navbar li.dropdown.Discord::before {
+nav#navbar li.dropdown.custom::before {
   display: none;
 }
 
