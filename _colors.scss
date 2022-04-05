@@ -17,120 +17,193 @@
 // base0E - Keywords, Storage, Selector, Markup Italic, Diff Changed
 // base0F - Deprecated, Opening/Closing Embedded Language Tags, e.g. <?php ?>
 
-// light palette as default
-//@import 'base16/base16-gruvbox-light-hard';
-//@import 'base16/base16-cupcake';
-//@import 'base16/base16-summerfruit-light';
-
+// import light pallette
 @import 'base16/base16-mexico-light';
 :root {
-  --color: #{$base05};
-  --background: #{$base00};
-  --link: #{$base0D};
-  --visited: #{$base0E};
-  --border: #{$base04};
-  --footer: #{$base02};
-  --tab: #{$base02};
+  --light_base00: #{$base00};
+  --light_base01: #{$base01};
+  --light_base02: #{$base02};
+  --light_base03: #{$base03};
+  --light_base04: #{$base04};
+  --light_base05: #{$base05};
+  --light_base06: #{$base06};
+  --light_base07: #{$base07};
+  --light_base08: #{$base08};
+  --light_base09: #{$base09};
+  --light_base0A: #{$base0A};
+  --light_base0B: #{$base0B};
+  --light_base0C: #{$base0C};
+  --light_base0D: #{$base0D};
+  --light_base0E: #{$base0E};
+  --light_base0F: #{$base0F};
+}
+
+// import dark pallette
+@import 'base16/base16-oceanicnext';
+:root {
+  --dark_base00: #{$base00};
+  --dark_base01: #{$base01};
+  --dark_base02: #{$base02};
+  --dark_base03: #{$base03};
+  --dark_base04: #{$base04};
+  --dark_base05: #{$base05};
+  --dark_base06: #{$base06};
+  --dark_base07: #{$base07};
+  --dark_base08: #{$base08};
+  --dark_base09: #{$base09};
+  --dark_base0A: #{$base0A};
+  --dark_base0B: #{$base0B};
+  --dark_base0C: #{$base0C};
+  --dark_base0D: #{$base0D};
+  --dark_base0E: #{$base0E};
+  --dark_base0F: #{$base0F};
+}
+
+// import print pallette
+@import 'base16/base16-grayscale-light';
+:root {
+  --print_base00: #{$base00};
+  --print_base01: #{$base01};
+  --print_base02: #{$base02};
+  --print_base03: #{$base03};
+  --print_base04: #{$base04};
+  --print_base05: #{$base05};
+  --print_base06: #{$base06};
+  --print_base07: #{$base07};
+  --print_base08: #{$base08};
+  --print_base09: #{$base09};
+  --print_base0A: #{$base0A};
+  --print_base0B: #{$base0B};
+  --print_base0C: #{$base0C};
+  --print_base0D: #{$base0D};
+  --print_base0E: #{$base0E};
+  --print_base0F: #{$base0F};
+}
+
+// apply light pallette
+:root,
+:root[data-theme='light'] {
+  --base00: var(--light_base00);
+  --base01: var(--light_base01);
+  --base02: var(--light_base02);
+  --base03: var(--light_base03);
+  --base04: var(--light_base04);
+  --base05: var(--light_base05);
+  --base06: var(--light_base06);
+  --base07: var(--light_base07);
+  --base08: var(--light_base08);
+  --base09: var(--light_base09);
+  --base0A: var(--light_base0A);
+  --base0B: var(--light_base0B);
+  --base0C: var(--light_base0C);
+  --base0D: var(--light_base0D);
+  --base0E: var(--light_base0E);
+  --base0F: var(--light_base0F);
+  --statustext: var(--base05);
+}
+
+// apply dark pallette
+:root[data-theme='dark'] {
+  --base00: var(--dark_base00);
+  --base01: var(--dark_base01);
+  --base02: var(--dark_base02);
+  --base03: var(--dark_base03);
+  --base04: var(--dark_base04);
+  --base05: var(--dark_base05);
+  --base06: var(--dark_base06);
+  --base07: var(--dark_base07);
+  --base08: var(--dark_base08);
+  --base09: var(--dark_base09);
+  --base0A: var(--dark_base0A);
+  --base0B: var(--dark_base0B);
+  --base0C: var(--dark_base0C);
+  --base0D: var(--dark_base0D);
+  --base0E: var(--dark_base0E);
+  --base0F: var(--dark_base0F);
+  --statustext: var(--base00);
+}
+
+// apply dark pallette
+@media (prefers-color-scheme: dark) {
+  :root {
+    --base00: var(--dark_base00);
+    --base01: var(--dark_base01);
+    --base02: var(--dark_base02);
+    --base03: var(--dark_base03);
+    --base04: var(--dark_base04);
+    --base05: var(--dark_base05);
+    --base06: var(--dark_base06);
+    --base07: var(--dark_base07);
+    --base08: var(--dark_base08);
+    --base09: var(--dark_base09);
+    --base0A: var(--dark_base0A);
+    --base0B: var(--dark_base0B);
+    --base0C: var(--dark_base0C);
+    --base0D: var(--dark_base0D);
+    --base0E: var(--dark_base0E);
+    --base0F: var(--dark_base0F);
+    --statustext: var(--base00);
+  }
+}
+
+// apply print pallette
+@media print {
+  :root {
+    --base00: var(--print_base00);
+    --base01: var(--print_base01);
+    --base02: var(--print_base02);
+    --base03: var(--print_base03);
+    --base04: var(--print_base04);
+    --base05: var(--print_base05);
+    --base06: var(--print_base06);
+    --base07: var(--print_base07);
+    --base08: var(--print_base08);
+    --base09: var(--print_base09);
+    --base0A: var(--print_base0A);
+    --base0B: var(--print_base0B);
+    --base0C: var(--print_base0C);
+    --base0D: var(--print_base0D);
+    --base0E: var(--print_base0E);
+    --base0F: var(--print_base0F);
+    --color: var(--base05);
+    --background: var(--base00);
+    --link: var(--base05);
+    --visited: var(--base05);
+    --border: var(--base06);
+    --footer: var(--base07);
+    --tab: var(--base02);
+    --input: white;
+    --keyword: var(--base0E);
+    --success: lightgreen;
+    --statustext: var(--base05);
+  }
+}
+
+// semantically defined pallette
+:root {
+  --color: var(--base05);
+  --background: var(--base00);
+  --link: var(--base0D);
+  --visited: var(--base0E);
+  --border: var(--base04);
+  --footer: var(--base02);
+  --tab: var(--base02);
   --input: white;
   --inputbackground: white;
   --inputcolor: black;
-  --focusinput: #{$base0D};
+  --focusinput: var(--base0D);
   --success: lightgreen;
   --failure: coral;
   --incomplete: orange;
   --meets: lightgreen;
   --excels: #0909FF;
-  --buttonbackground: #{$base0D};
-  --buttonforeground: #{$base00};
-  --buttonsubmittedbackground: #{$base02};
-  --buttonsubmittedforeground: #{$base04};
-  --buttonhoverbackground: #{$base0C};
-  --buttonhoverforeground: #{$base02};
-  --keyword: #{$base0E};
-  --base00: #{$base00};
-  --base01: #{$base01};
-  --base02: #{$base02};
-  --base03: #{$base03};
-  --base04: #{$base04};
-  --base05: #{$base05};
-  --base06: #{$base06};
-  --base07: #{$base07};
-  --base08: #{$base08};
-  --base09: #{$base09};
-  --base0A: #{$base0A};
-  --base0B: #{$base0B};
-  --base0C: #{$base0C};
-  --base0D: #{$base0D};
-  --base0E: #{$base0E};
-  --base0F: #{$base0F};
-}
-
-// dark palette if requested
-@media (prefers-color-scheme: dark) {
-  //@import 'base16/base16-gruvbox-dark-soft';
-  //@import 'base16/base16-eighties';
-  @import 'base16/base16-oceanicnext';
-  :root {
-    --color: #{$base05};
-    --background: #{$base00};
-    --link: #{$base0D};
-    --visited: #{$base0E};
-    --border: #{$base04};
-    --footer: #{$base02};
-    --tab: #{$base02};
-    --input: white;
-    --success: lightgreen;
-    --keyword: #{$base0E};
-    --base00: #{$base00};
-    --base01: #{$base01};
-    --base02: #{$base02};
-    --base03: #{$base03};
-    --base04: #{$base04};
-    --base05: #{$base05};
-    --base06: #{$base06};
-    --base07: #{$base07};
-    --base08: #{$base08};
-    --base09: #{$base09};
-    --base0A: #{$base0A};
-    --base0B: #{$base0B};
-    --base0C: #{$base0C};
-    --base0D: #{$base0D};
-    --base0E: #{$base0E};
-    --base0F: #{$base0F};
-  }
-}
-
-// print palette for print
-@media print {
-  @import 'base16/base16-grayscale-light';
-  :root {
-    --color: #{$base05};
-    --background: #{$base00};
-    --link: #{$base05};
-    --visited: #{$base05};
-    --border: #{$base06};
-    --footer: #{$base07};
-    --tab: #{$base02};
-    --input: white;
-    --keyword: #{$base0E};
-    --success: lightgreen;
-    --base00: #{$base00};
-    --base01: #{$base01};
-    --base02: #{$base02};
-    --base03: #{$base03};
-    --base04: #{$base04};
-    --base05: #{$base05};
-    --base06: #{$base06};
-    --base07: #{$base07};
-    --base08: #{$base08};
-    --base09: #{$base09};
-    --base0A: #{$base0A};
-    --base0B: #{$base0B};
-    --base0C: #{$base0C};
-    --base0D: #{$base0D};
-    --base0E: #{$base0E};
-    --base0F: #{$base0F};
-  }
+  --buttonbackground: var(--base0D);
+  --buttonforeground: var(--base00);
+  --buttonsubmittedbackground: var(--base02);
+  --buttonsubmittedforeground: var(--base04);
+  --buttonhoverbackground: var(--base0C);
+  --buttonhoverforeground: var(--base02);
+  --keyword: var(--base0E);
 }
 
 * {

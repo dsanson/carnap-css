@@ -43,6 +43,7 @@ div.exercise {
   [data-carnap-type='truthtable'].success > .input,
   [data-carnap-type='countermodeler'].success > .input {
     background-color: var(--success) !important;
+    color: var(--statustext) !important; 
   }
   
   [data-carnap-type='qualitative'].success > .input::after {
@@ -408,7 +409,11 @@ div.exercise {
   button {
     height: 1.7em !important;
   }
-
+ 
+  textarea,
+  .output * {
+    color: var(--inputcolor);
+  }
   //TODO: display mode?
   //TODO: background-color is clobbering the pretty render
 }
