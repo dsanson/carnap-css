@@ -1095,10 +1095,17 @@ div.itt {
 
   select {
     appearance: none;
+    -webkit-appearance: none;
     background-color: var(--inputbackground);
     color: var(--inputcolor);
-    border: solid 1px var(--border);
-    border-radius: 5px;
+    border: solid 2px var(--base02);
+    border-radius: 0px;
+    box-sizing: border-box;
+    padding: 2px !important;
+
+    &:hover {
+      border: solid 2px var(--base0C);
+    }
   }
 
   > .input {
