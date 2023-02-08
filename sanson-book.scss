@@ -276,6 +276,10 @@ h4 {
   }
 }
 
+nav#navbar li.dropdown > ul {
+    background-color: var(--background) !important;
+}
+
 // .book.dropdown is the dropdown table of contents
 
 
@@ -309,12 +313,13 @@ nav#navbar li.book.dropdown {
   a:hover {
     background-color: var(--base01);
   }
+  
 
   input {
     display: none;
   }
 
-  .current {
+  .current, .currentpage {
     background: var(--tab);
     margin-left: -1em;
     padding-left: 1em;
@@ -523,6 +528,34 @@ body.shared[class^='_00R'] {
   display: none;
  }
 
+// definition boxes
+
+.defs {
+  border: thin solid var(--keyword);
+  border-radius: .5em;
+  padding: 1em;
+  position: relative;
+  margin-bottom: 2em;
+
+  &::before {
+    content: 'Definitions';
+    background-color: var(--tab);
+    position: absolute;
+    top: -13px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  dt::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+.math.display {
+  display: block;
+  text-align: center;
+}
+
 // spoiler boxes
 
 .spoiler {
@@ -554,6 +587,10 @@ body.shared[class^='_00R'] {
   border-radius: .5em;
   padding: 1em;
 
+  &.default {
+    display: block;
+    border: thick solid var(--tab);
+  }
   &.correct {
     border: thick solid var(--success);
   }
@@ -1329,6 +1366,17 @@ div.nobullets ul {
   }
 }
 
+.exercise.other_correct {
+  > span:nth-child(1) {
+    background-color: var(--incomplete);
+    color: var(--statustext) !important;
+
+    &::after {
+      content: ' (previously correct, but need to redo)';
+    }
+  }
+}
+
 .exercise.incorrect {
   > span:nth-child(1) {
     background-color: var(--failure);
@@ -1830,6 +1878,14 @@ div.exercise-checklist {
 
           &::after {
             content: '✓'; 
+          }
+        }
+
+        &.other_correct {
+          background-color: var(--incomplete);
+
+          &::after {
+            content: '!'; 
           }
         }
 
