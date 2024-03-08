@@ -161,12 +161,13 @@ h4 {
       vertical-align: middle;
     }
     &:hover::before {
+      content: '📋\FE0E';
       opacity: 1;
     }
   }
 }
 
-.cover > h1 {
+.cover > h1, .cover > h2 {
   .anchor::before {
     content: '';
   }
@@ -175,13 +176,12 @@ h4 {
 // Book chapter elements
 
 .cover {
-  //border: 5px solid var(--border);
-  //height: 40em;
-  //overflow: hidden;
-  //position: relative;
-  //background-color: var(--base09);
   border-bottom: thin var(--border) solid;
   margin-bottom: 5em;
+  background-image: radial-gradient(white, lightyellow, yellow);
+  // box-shadow: 0em 0em 2em 1em lightyellow;
+  text-align: center;
+  padding: 1em;
   
   h1 {
     font-size: calc(1em + 3vw);
@@ -196,8 +196,14 @@ h4 {
     //background-color: var(--tab);
     //opacity: .8;
     margin-top: .2em;
+    margin-bottom: 0em;
   }
-
+ 
+  h2 {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: 2em;
+  }
   img {
     display: block;
     height: auto;
@@ -264,6 +270,16 @@ h4 {
 
 }
 
+[data-theme="dark"] .cover {
+  background-image: radial-gradient(#aaa, #111, #000);
+}
+
+// @media (prefers-color-scheme: dark) {
+//   .cover {
+//     background-image: radial-gradient(#aaa, #111, #000);
+//   }
+// }
+
 .license {
   text-align: center;
 }
@@ -282,7 +298,6 @@ nav#navbar li.dropdown > ul {
 
 // .book.dropdown is the dropdown table of contents
 
-
 nav#navbar li.book.dropdown {
   position: absolute;
   left: 0;
@@ -291,18 +306,33 @@ nav#navbar li.book.dropdown {
   &::before {
     display: none;
   }
+  
+  .toc {
+    max-height: 90vh;
+    overflow: scroll;
+    padding: .5em;
+  }
+
+  li {
+    list-style: none;
+    &::before {
+      content: none;
+    }
+    line-height: 1.6;
+  }
 
   > ul {
     margin: 0;
-    padding-right: 1em;
-    padding-bottom: 1em;
+    padding: 0;  
     min-width: 20em;
-    overflow: scroll;
-    height: 90vh;
-
-      > li {
-        list-style: none;
-      }
+    ul {
+      margin: 0;
+      padding-left: 1em;
+    }
+  }
+  
+  ul ul ul {
+    font-size: smaller;
   }
 
   a {
@@ -1712,6 +1742,9 @@ input,
   &.A,
   &.P, 
   &.B, 
+  &.F,
+  &.G,
+  &.H,
   &.Q, 
   &.C, 
   &.R, 
@@ -1731,6 +1764,9 @@ input,
 .A, 
 .P, 
 .B, 
+.F,
+.G,
+.H,
 .Q, 
 .C, 
 .R, 
@@ -1777,6 +1813,9 @@ input,
 .compact .P, 
 .compact .B, 
 .compact .Q, 
+.compact .F,
+.compact .G,
+.compact .H,
 .compact .C, 
 .compact .R, 
 .compact .D, 
@@ -1789,18 +1828,18 @@ input,
 
 
 
-.A, .P {
+.A, .P, .F {
   color: var(--base0D);
  }
 
-.B, .Q {
+.B, .Q, .G {
   border-radius: 20px;
   color: var(--base0F);
   // min-height: 1.46em;
   min-width: 1.46em;
 }
 
-.C, .R {
+.C, .R, .H {
   border-radius: 10px 0 10px 0;
   color: var(--base0A);
   min-height: 1.3em;
@@ -2063,4 +2102,38 @@ nav#navbar .themeswitch {
   line-height: 1;
   padding-top: .7em;
   text-align: center;
+}
+
+figcaption {
+  text-align: center;
+  font-size: small;
+}
+
+// gradebook
+.grade-report {
+  tr:nth-child(odd) {
+    background-color: var(--base01);
+  }
+}
+
+.toc .dates {
+  padding-left: 1em;
+  font-size: small;
+}
+
+.dropdown .toc .dates {
+  display: none;
+}
+
+@media print {
+  header,
+  .navfooter,
+  footer,
+  .buttonWrapper {
+    display: none !important;
+  }
+  
+  div.exercise {
+    border: none !important;
+  }
 }

@@ -1,0 +1,63 @@
+@import 'fonts';
+@import 'colors';
+
+// truthtables
+
+[data-carnap-type='truthtable'] {
+
+  font-family: $font-stack-sans;
+  * {
+    font-size: 12pt !important;
+  }
+
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: var(--inputbackground);
+    color: var(--inputcolor);
+    border: solid 2px var(--base02);
+    border-radius: 0px;
+    box-sizing: border-box;
+    padding: 2px !important;
+
+    &:hover {
+      border: solid 2px var(--base0C);
+    }
+  }
+
+  td {
+    text-align: center;
+    
+    span {
+      padding: 0 .25em;
+    }
+  }
+
+  > .input {
+    background-color: inherit !important;
+    border: 0 !important;
+    text-align: left;
+  }
+
+  > .output {
+    background-color: inherit !important;
+    border: 0 !important;
+
+    > table {
+      margin: auto;
+    }
+  }
+
+  &[data-carnap-options~='display'] {
+    select { 
+      background-color: var(--background);
+      border: 0;
+    }
+  }
+  
+  // TODO: implement this in javascript. Requires modifying the parent width.
+  // TODO: set each select to "disabled" using javascript
+  &[data-carnap-options~='compact'] {
+    width: auto;
+  }
+}
