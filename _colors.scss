@@ -36,6 +36,9 @@
   --light_base0D: #{$base0D};
   --light_base0E: #{$base0E};
   --light_base0F: #{$base0F};
+  --light_good: lightgreen;
+  --light_bad: coral;
+  --light_excellent: #0909FF;
 }
 
 // import dark pallette
@@ -57,6 +60,9 @@
   --dark_base0D: #{$base0D};
   --dark_base0E: #{$base0E};
   --dark_base0F: #{$base0F};
+  --dark_good: darkgreen;
+  --dark_bad: coral;
+  --dark_excellent: lightblue;
 }
 
 // import print pallette
@@ -78,6 +84,9 @@
   --print_base0D: #{$base0D};
   --print_base0E: #{$base0E};
   --print_base0F: #{$base0F};
+  --print_good: black;
+  --print_bad: black;
+  --print_excellent: black;
 }
 
 // apply light pallette
@@ -100,6 +109,9 @@
   --base0E: var(--light_base0E);
   --base0F: var(--light_base0F);
   --statustext: var(--base05);
+  --good: var(--light_good);
+  --bad: var(--light_bad);
+  --excellent: var(--light_excellent);
 }
 
 // apply dark pallette
@@ -121,6 +133,9 @@
   --base0E: var(--dark_base0E);
   --base0F: var(--dark_base0F);
   --statustext: var(--base00);
+  --good: var(--dark_good);
+  --bad: var(--dark_bad);
+  --excellent: var(--dark_excellent);
 }
 
 // apply dark pallette
@@ -143,6 +158,9 @@
     --base0E: var(--dark_base0E);
     --base0F: var(--dark_base0F);
     --statustext: var(--base00);
+    --good: var(--dark_good);
+    --bad: var(--dark_bad);
+    --excellent: var(--dark_excellent);
   }
 }
 
@@ -165,6 +183,9 @@
     --base0D: var(--print_base0D);
     --base0E: var(--print_base0E);
     --base0F: var(--print_base0F);
+    --good: var(--print_good);
+    --bad: var(--print_bad);
+    --excellent: var(--print_excellent);
     --color: var(--base05);
     --background: var(--base00);
     --link: var(--base05);
@@ -174,7 +195,7 @@
     --tab: var(--base02);
     --input: white;
     --keyword: var(--base0E);
-    --success: lightgreen;
+    --success: var(--good);
     --statustext: var(--base05);
   }
 }
@@ -192,11 +213,11 @@
   --inputbackground: white;
   --inputcolor: black;
   --focusinput: var(--base0D);
-  --success: lightgreen;
-  --failure: coral;
+  --success: var(--good);
+  --failure: var(--bad);
   --incomplete: orange;
-  --meets: lightgreen;
-  --excels: #0909FF;
+  --meets: var(--good);
+  --excels: var(--excellent);
   --buttonbackground: var(--base0D);
   --buttonforeground: var(--base00);
   --buttonsubmittedbackground: var(--base02);

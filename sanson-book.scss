@@ -833,15 +833,25 @@ aside,
     width: calc(100% + .5em);
     min-width: -moz-fit-content;
     min-width: fit-content;
-    padding: .25em 0 0 0;
+    padding: .25em 0 .5em .5em;
     vertical-align: top;
 
     &::before {
       font-family: $font-stack;
       content: '∴';
-      left: -1em;
+      width: 0;
+      left: -2em;
+      display: inline-block;
       position: relative;
     }
+  }
+
+  &.informal > ul > li:last-child::before {
+    content: "";
+  }
+
+  &.informal > ol > li:last-child::before {
+    content: "";
   }
 
   ol > li:last-child {
@@ -851,7 +861,7 @@ aside,
     width: 100%;
     min-width: -moz-fit-content;
     min-width: fit-content;
-    padding: .25em 0 0 .5em;
+    padding: .25em 0 .5em .5em;
     vertical-align: top;
 
     &::before {
@@ -904,6 +914,8 @@ aside,
     bottom: auto;
     z-index:200;
     background-color: var(--background);
+    max-height:80vh;
+    overflow: scroll;
   }
 }
 
@@ -2113,6 +2125,27 @@ figcaption {
 .grade-report {
   tr:nth-child(odd) {
     background-color: var(--base01);
+  }
+  .soon {
+    color: var(--excels);
+  }
+  .past {
+    color: var(--failure);
+  }
+  
+  #progress-bar {
+    .unit-box {
+      display: inline-block;
+      border: thick solid grey;
+      padding: .25em;
+    }
+
+    .complete {
+      border-color: var(--success)
+    }
+    .mastered {
+      border-color: var(--excels)
+    }
   }
 }
 
